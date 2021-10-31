@@ -45,9 +45,10 @@ const MyOrders = () => {
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Email</th>
                             <th>Place Name</th>
                             <th>Price</th>
+                            <th>Address</th>
+                            <th>Stetus</th>
                         </tr>
                     </thead>
                     {orders?.map((order, index) => (
@@ -55,9 +56,10 @@ const MyOrders = () => {
                             <tr>
                                 <td>{index}</td>
                                 <td>{order.name}</td>
-                                <td>{order.email}</td>
                                 <td>{order.place}</td>
                                 <td>$ {order.price}</td>
+                                <td>{order.address}</td>
+                                <td>{order.stetus}</td>
                                 <button
                                     onClick={() => handleDelete(order._id)}
                                     className="btn bg-danger p-2 ms-4"

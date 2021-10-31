@@ -17,6 +17,7 @@ const ManageOrders = () => {
                 setOrders(data)
             });
     }, []);
+    
 
     const handleDelete = (id) => {
         
@@ -51,6 +52,7 @@ const ManageOrders = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Place Name</th>
+                            <th>Address</th>
                             <th>Price</th>
                         </tr>
                     </thead>
@@ -61,6 +63,7 @@ const ManageOrders = () => {
                                 <td>{order.name}</td>
                                 <td>{order.email}</td>
                                 <td>{order.place}</td>
+                                <td>{order.address}</td>
                                 <td>$ {order.price}</td>
                             
                                 
