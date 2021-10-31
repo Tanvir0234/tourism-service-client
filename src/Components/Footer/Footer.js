@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaFacebookF ,FaGoogle,FaTwitterSquare } from "react-icons/fa";
 import './Footer.css'
 
 const Footer = () => {
@@ -64,10 +65,7 @@ const Footer = () => {
                         <div className="row d-flex justify-content-center">
                             <div className="col-lg-8">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                                    distinctio earum repellat quaerat voluptatibus placeat nam,
-                                    commodi optio pariatur est quia magnam eum harum corrupti
-                                    dicta, aliquam sequi voluptate quas.
+                                Travel insurance for all travellers. We have plans for all types of travellers. If you travel regularly for business, take a series of short weekend trips, spend the winter in the US, or need coverage for your upcoming vacation, we have a plan that is right for you
                                 </p>
                             </div>
                         </div>
@@ -77,13 +75,13 @@ const Footer = () => {
 
                     <section className="text-center mb-3">
                         <a href="" className="text-white me-4">
-                            <i className="fab fa-facebook-f"></i>
+                        <FaFacebookF></FaFacebookF>
                         </a>
                         <a href="" className="text-white me-4">
-                            <i className="fab fa-twitter"></i>
+                        <FaTwitterSquare></FaTwitterSquare>
                         </a>
                         <a href="" className="text-white me-4">
-                            <i className="fab fa-google"></i>
+                        <FaGoogle></FaGoogle>
                         </a>
                         <a href="" className="text-white me-4">
                             <i className="fab fa-instagram"></i>

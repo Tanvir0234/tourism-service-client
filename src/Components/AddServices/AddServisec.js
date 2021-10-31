@@ -4,14 +4,18 @@ import { useForm } from "react-hook-form";
 const AddServisec = () => {
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
-        fetch("http://localhost:5000/addService", {
+        fetch("https://infinite-castle-18932.herokuapp.com/addService", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
-        console.log(data);
+      .then((result) => {
+        if(result.insertedId){
+            alert('Added Successfully')
+        }
+      });
+        //console.log(data);
         reset()
     }
     return (

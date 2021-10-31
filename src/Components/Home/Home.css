@@ -1,6 +1,19 @@
 .banner{
-    height: 450px;
+    height: 500px;
 }
 .size{
     height: 250px !important;
+}
+.image{
+    margin-left: 69px;
+}
+.client{
+    background-color: #061a3a;
+}
+.client-image{
+    height: 150px;
+    width: 130px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    
 }

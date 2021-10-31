@@ -1,30 +1,41 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
+import { FaTrashAlt } from "react-icons/fa";
 
 
 const ManageOrders = () => {
-    const [deleteOrders, setDeleteOrders] = useState([]);
+    const [orders, setOrders] = useState([]);
 
-    //const [control, setConrol] = useState(false);
+    
 
     useEffect(() => {
-        fetch("http://localhost:5000/allOrders")
+        fetch("https://infinite-castle-18932.herokuapp.com/allOrders")
             .then((res) => res.json())
-            .then((data) => setDeleteOrders(data));
+            .then((data) => {
+                
+                setOrders(data)
+            });
     }, []);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        
+        fetch(`https://infinite-castle-18932.herokuapp.com/deleteOrder/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
         })
             .then((res) => res.json())
             .then((data) => {
+               
                 if(data.deletedCount){
-                    alert('deleted')
-                    const remaining = deleteOrders.filter(order =>order._id !== id);
-                    setDeleteOrders(remaining);
+                    let answer = window.confirm("Are you sure?");
+                    if(answer){
+                        const remaining = orders.filter(order =>order._id !== id);
+                        setOrders(remaining);
+                    }
+                    else{
+                        setOrders([]) 
+                    }
                 } 
             });
         
@@ -32,7 +43,7 @@ const ManageOrders = () => {
     return (
         <div className="container">
             <div className="m-4">
-                <h1 className="text-center">Total Orders {deleteOrders?.length}</h1>
+                <h1 className="text-center">Total Orders {orders?.length}</h1>
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -43,19 +54,21 @@ const ManageOrders = () => {
                             <th>Price</th>
                         </tr>
                     </thead>
-                    {deleteOrders?.map((order, index) => (
+                    {orders?.map((order, index) => (
                         <tbody>
                             <tr>
                                 <td>{index}</td>
                                 <td>{order.name}</td>
                                 <td>{order.email}</td>
                                 <td>{order.place}</td>
-                                <td>{order.price}</td>
+                                <td>$ {order.price}</td>
+                            
+                                
                                 <button
                                     onClick={() => handleDelete(order._id)}
                                     className="btn bg-danger p-2 ms-4"
                                 >
-                                    Delete
+                                    <FaTrashAlt></FaTrashAlt>
                                 </button>
                             </tr>
                         </tbody>

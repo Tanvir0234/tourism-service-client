@@ -1,10 +1,11 @@
 .area {
-    background: grey;
-    color: black;
+    background-color: #79589f;
+    color: #fff;
     height: 100vh;
   }
   .admin-container {
     overflow-x: hidden;
+    
   }
   .menu {
     list-style: none;
@@ -13,3 +14,13 @@
   .menu:hover {
     color: blue;
   }
+
+
+
+  .active{
+    z-index: 2;
+    color: black;
+    background-color: white;
+    border-color: #E7E7EC;
+}
+  

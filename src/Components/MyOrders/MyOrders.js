@@ -1,30 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import useAuth from '../Hooks/useAuth';
+import { FaTrashAlt } from "react-icons/fa";
 
 const MyOrders = () => {
 
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
-    const [deleteOrders, setDeleteOrders] = useState([]);
+    
     useEffect(() => {
-        fetch(`http://localhost:5000/myOrders/${user?.email}`)
+        fetch(`https://infinite-castle-18932.herokuapp.com/myOrders/${user?.email}`)
             .then((res) => res.json())
             .then((data) => setOrders(data));
     }, [user.email]);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteOrder/${id}`, {
+        fetch(`https://infinite-castle-18932.herokuapp.com/deleteOrder/${id}`, {
             method: "DELETE",
             headers: { "content-type": "application/json" },
         })
             .then((res) => res.json())
             .then((data) => {
-                if (data.deletedCount) {
-                    alert('deleted')
-                    const remaining = deleteOrders.filter(order => order._id !== id);
-                    setDeleteOrders(remaining);
+                let answer = window.confirm("Are you sure?");
+                if(answer){
+                    if(data.deletedCount){
+                        
+                        const remaining = orders.filter(order =>order._id !== id);
+                        setOrders(remaining);
+                       
+                    } 
                 }
+                
             });
 
     };
@@ -51,12 +57,12 @@ const MyOrders = () => {
                                 <td>{order.name}</td>
                                 <td>{order.email}</td>
                                 <td>{order.place}</td>
-                                <td>{order.price}</td>
+                                <td>$ {order.price}</td>
                                 <button
                                     onClick={() => handleDelete(order._id)}
                                     className="btn bg-danger p-2 ms-4"
                                 >
-                                    Delete
+                                   <FaTrashAlt></FaTrashAlt>
                                 </button>
                             </tr>
                         </tbody>

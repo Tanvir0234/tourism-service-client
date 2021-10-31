@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useService from '../Hooks/useService';
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 const Services = () => {
     const {services} = useService([]);
@@ -21,11 +22,11 @@ const Services = () => {
                             <div className="card-body">
                                 <h5 className="card-title text-center">{service.name}</h5>
                                 <p className="text-center">{service.description}</p>
-                                <h6 className="card-text text-center"> Treatment Fee : {service.price}</h6>
+                                <h6 className="card-text text-center"> Treatment Fee : ${service.price}</h6>
                             </div>
 
                             <Link to={`/details/${service._id}`}>
-                                <button className="btn btn-danger align mx-4 mb-3">See Details </button>
+                                <button className="btn btn-danger align mx-4 mb-3">See Details <FaAngleDoubleRight></FaAngleDoubleRight> </button>
                             </Link>
                         </div>
 

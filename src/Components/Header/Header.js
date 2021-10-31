@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import logo from '../../images/logo.png'
 
 const Header = () => {
   const { user, handleLogOut } = useAuth();
@@ -10,13 +11,20 @@ const Header = () => {
       <Navbar expand="lg" variant="light" className="background">
         <Container>
           <Navbar.Brand className="text-white fw-bold" href="#home">
+          <img
+        src={logo}
+        width="120"
+        height="40"
+        className="d-inline-block align-top"
+        alt="React Bootstrap logo"
+      />
 
-            Trip <span className="text-white fw-bold">Agencies</span>
+            
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto py-2" >
-              <Nav.Link className="text-white fw-bold me-2 px-3" as={Link} to="/home">
+            <Nav className="ms-auto py-2" >
+              <Nav.Link className="text-white fw-bold me-2" as={Link} to="/home">
                 Home
               </Nav.Link>
               <Nav.Link className="text-white fw-bold me-2" as={Link} to="/services">
@@ -33,17 +41,7 @@ const Header = () => {
                 user?.email ? (
                   <>
                   
-                  {/*
-                    <Nav.Link className="text-white fw-bold me-2" as={Link} to="/manageOrder">
-                      Manage Order
-                    </Nav.Link>
-                    <Nav.Link className="text-white fw-bold me-2" as={Link} to="/myOrders">
-                      My Orders
-                    </Nav.Link>
-                    <Nav.Link className="text-white fw-bold me-2" as={Link} to="/addService">
-                      Add New Service
-                    </Nav.Link>
-                  */}
+                  
                    <Nav.Link className="text-white fw-bold me-2" as={Link} to="/admin">
                       Admin
                     </Nav.Link>
@@ -57,7 +55,7 @@ const Header = () => {
                     </Nav.Link>
                   </>)
                   :
-                  (<Nav.Link className="btn  text-white fw-bold" as={Link} to="/login">
+                  (<Nav.Link className="btn btn-danger rounded-pill px-4  text-white fw-bold" as={Link} to="/login">
                     log In
                   </Nav.Link>)
               }

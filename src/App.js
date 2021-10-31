@@ -1,6 +1,7 @@
 
 import { BrowserRouter,Switch,Route} from 'react-router-dom';
 import './App.css';
+import About from './Components/About/About';
 import AddServisec from './Components/AddServices/AddServisec';
 import Admin from './Components/Admin/Admin';
 import Contact from './Components/Contact/Contact';
@@ -11,7 +12,9 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import ManageOrders from './Components/ManageOrders/ManageOrders';
 import MyOrders from './Components/MyOrders/MyOrders';
-import PlaceOrder from './Components/PlaceOrder/PlaceOrder';
+
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+
 import Services from './Components/Services/Services';
 import Details from './Details/Details';
 
@@ -43,18 +46,18 @@ function App() {
         <Route exact path ="/addService">
         <AddServisec></AddServisec>
        </Route>
-        <Route exact path ="/contactUs">
+        <PrivateRoute exact path ="/contactUs">
         <Contact></Contact>
-       </Route>
+       </PrivateRoute>
         <Route exact path ="/admin">
         <Admin></Admin>
        </Route>
-        <Route exact path ="/placeOrder">
-        <PlaceOrder></PlaceOrder>
+        <Route exact path ="/aboutUs">
+        <About></About>
        </Route>
-        <Route exact path ="/details/:serviceId">
+        <PrivateRoute exact path ="/details/:serviceId">
         <Details></Details>
-       </Route>
+       </PrivateRoute>
 
       </Switch>
       <Footer></Footer>
