@@ -12,6 +12,7 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import ManageOrders from './Components/ManageOrders/ManageOrders';
 import MyOrders from './Components/MyOrders/MyOrders';
+import NotFound from './Components/NotFound/NotFound';
 
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 
@@ -58,7 +59,9 @@ function App() {
         <PrivateRoute exact path ="/details/:serviceId">
         <Details></Details>
        </PrivateRoute>
-
+       <Route  path ="*">
+        <NotFound></NotFound>
+       </Route>
       </Switch>
       <Footer></Footer>
       </BrowserRouter>
