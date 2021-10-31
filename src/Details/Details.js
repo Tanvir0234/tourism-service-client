@@ -72,7 +72,7 @@ const Details = () => {
                                 <input {...register("name", )} value={user?.displayName} readOnly placeholder="Your Name" className="p-2 m-2" /> <br />
                                 <input {...register("place", )} placeholder="Place Name" className="p-2 m-2" /> <br />
                                 <input {...register("email", )} value={user?.email} readOnly placeholder="Email" className="p-2 m-2" /><br />
-                                <input type="number" {...register("price")} placeholder="Price Multiple the Person " className="p-2 m-2" /><br />
+                                <input type="number" {...register("price") }   placeholder="Price Multiple the Person " className="p-2 m-2" /><br />
                                 <input {...register("address", )}  placeholder="Address" className="p-2 m-2" /> <br />
                                 <input type="submit" className="btn btn-danger px-5 mx-4" /><br />
 

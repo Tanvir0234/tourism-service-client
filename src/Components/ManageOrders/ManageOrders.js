@@ -20,25 +20,26 @@ const ManageOrders = () => {
     
 
     const handleDelete = (id) => {
-        
-        fetch(`https://infinite-castle-18932.herokuapp.com/deleteOrder/${id}`, {
-            method: "DELETE",
-            headers: { "content-type": "application/json" },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-               
-                if(data.deletedCount){
-                    let answer = window.confirm("Are you sure?");
-                    if(answer){
-                        const remaining = orders.filter(order =>order._id !== id);
-                        setOrders(remaining);
-                    }
-                    else{
-                        setOrders([]) 
-                    }
-                } 
-            });
+        let answer = window.confirm("Are you sure?")
+        if(answer){
+            fetch(`https://infinite-castle-18932.herokuapp.com/deleteOrder/${id}`, {
+                method: "DELETE",
+                headers: { "content-type": "application/json" },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                   
+                    if(data.deletedCount){
+                        
+                    
+                            const remaining = orders.filter(order =>order._id !== id);
+                            setOrders(remaining);
+                        
+                        
+                    } 
+                });
+            
+        }
         
     };
     return (
@@ -71,7 +72,7 @@ const ManageOrders = () => {
                                     onClick={() => handleDelete(order._id)}
                                     className="btn bg-danger p-2 ms-4"
                                 >
-                                    <FaTrashAlt></FaTrashAlt>
+                                    <FaTrashAlt className="text-white"></FaTrashAlt>
                                 </button>
                             </tr>
                         </tbody>

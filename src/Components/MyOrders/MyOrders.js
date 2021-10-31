@@ -15,23 +15,27 @@ const MyOrders = () => {
     }, [user.email]);
 
     const handleDelete = (id) => {
-        fetch(`https://infinite-castle-18932.herokuapp.com/deleteOrder/${id}`, {
-            method: "DELETE",
-            headers: { "content-type": "application/json" },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                let answer = window.confirm("Are you sure?");
-                if(answer){
-                    if(data.deletedCount){
-                        
-                        const remaining = orders.filter(order =>order._id !== id);
-                        setOrders(remaining);
-                       
-                    } 
-                }
-                
-            });
+        let answer = window.confirm("Are you sure?")
+        if(answer){
+            fetch(`https://infinite-castle-18932.herokuapp.com/deleteOrder/${id}`, {
+                method: "DELETE",
+                headers: { "content-type": "application/json" },
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    
+                    
+                        if(data.deletedCount){
+                            
+                            const remaining = orders.filter(order =>order._id !== id);
+                            setOrders(remaining);
+                           
+                        } 
+                    
+                    
+                });
+        }
+       
 
     };
 
@@ -64,7 +68,7 @@ const MyOrders = () => {
                                     onClick={() => handleDelete(order._id)}
                                     className="btn bg-danger p-2 ms-4"
                                 >
-                                   <FaTrashAlt></FaTrashAlt>
+                                   <FaTrashAlt className="text-white"></FaTrashAlt>
                                 </button>
                             </tr>
                         </tbody>
